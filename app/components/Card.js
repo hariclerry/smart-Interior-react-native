@@ -1,16 +1,16 @@
-import React from 'react';
-import { View, StyleSheet, Image, Text } from 'react-native';
+import React from "react";
+import { View, StyleSheet, Image } from "react-native";
 
+import AppText from "./AppText";
+import colors from "../config/colors";
 
-import colors from '../config/colors';
-
-function Card({ image, subTitle, title }) {
+function Card({ title, subTitle, image }) {
     return (
         <View style={styles.card}>
-            <Image source={image} style={styles.image} />
+            <Image style={styles.image} source={image} />
             <View style={styles.detailsContainer}>
-                <Text style={styles.text}>{title}</Text>
-                <Text style={styles.text}>{subTitle}</Text>
+                <AppText style={styles.title}>{title}</AppText>
+                <AppText style={styles.subTitle}>{subTitle}</AppText>
             </View>
         </View>
     );
@@ -19,23 +19,24 @@ function Card({ image, subTitle, title }) {
 const styles = StyleSheet.create({
     card: {
         borderRadius: 15,
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
         marginBottom: 20,
-        overflow: 'hidden',
-    },
-    text: {
-        color: colors.black,
-        fontSize: 18,
-        // padding: 10
-
-
-    },
-    image: {
-        width: '100%',
-        height: 200,
+        overflow: "hidden",
     },
     detailsContainer: {
         padding: 20,
     },
-})
+    image: {
+        width: "100%",
+        height: 200,
+    },
+    subTitle: {
+        color: colors.secondary,
+        fontWeight: "bold",
+    },
+    title: {
+        marginBottom: 7,
+    },
+});
+
 export default Card;

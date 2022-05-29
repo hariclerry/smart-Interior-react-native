@@ -8,14 +8,14 @@ import colors from "../config/colors";
 function ListingDetailsScreen(props) {
     return (
         <View>
-            <Image style={styles.image} source={require("../assets/jacket.jpg")} />
+            <Image style={styles.image} source={require("../assets/flower-vase.jpg")} />
             <View style={styles.detailsContainer}>
                 <AppText style={styles.title}>Red jacket for sale</AppText>
                 <AppText style={styles.price}>$100</AppText>
                 <View style={styles.userContainer}>
                     <ListItem
-                        image={require("../assets/mosh.jpg")}
-                        title="Mosh Hamedani"
+                        image={require("../assets/avatar2.jpg")}
+                        title="Harriet"
                         subTitle="5 Listings"
                     />
                 </View>
