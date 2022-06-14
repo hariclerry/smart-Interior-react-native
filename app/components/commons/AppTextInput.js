@@ -2,9 +2,10 @@ import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import defaultStyles from "../config/styles";
+import defaultStyles from "../../config/styles";
 
 function AppTextInput({ icon, ...otherProps }) {
+    // console.log("propssssss******", icon, '+++++++++++', otherProps)
     return (
         <View style={styles.container}>
             {icon && (
@@ -15,7 +16,9 @@ function AppTextInput({ icon, ...otherProps }) {
                     style={styles.icon}
                 />
             )}
-            <TextInput style={defaultStyles.text} {...otherProps} />
+            <TextInput
+                placeholderTextColor={defaultStyles.colors.medium}
+                style={defaultStyles.text} {...otherProps} />
         </View>
     );
 }
