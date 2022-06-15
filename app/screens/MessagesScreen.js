@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 import { ListItemsDeleteAction, ListItemSeparator, ListItem } from "../components/lists";
-import Screen from '../components/Screen';
+import Screen from '../components/commons/Screen';
 
 const initialMessages = [
     {
@@ -38,6 +38,7 @@ function MessagesScreen() {
                 keyExtractor={message => message.id.toString()}
                 renderItem={({ item }) => (
                     <ListItem
+                        isShowChevron
                         title={item.title}
                         subTitle={item.description}
                         image={item.image}

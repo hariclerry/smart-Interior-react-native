@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, Text, TextInput, View } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/commons/Screen";
@@ -14,7 +14,6 @@ function LoginScreen(props) {
     return (
         <Screen style={styles.container}>
             <Image style={styles.logo} source={require("../assets/smart-logo-removebg.png")} />
-
             <AppForm
                 initialValues={{ email: "", password: "" }}
                 onSubmit={(values) => console.log(values)}

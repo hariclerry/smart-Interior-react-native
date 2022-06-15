@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import colors from '../config/colors';
+import defaultStyles from "../../config/styles";
 
 function ListItemsDeleteAction({ onPress }) {
     return (
@@ -19,7 +19,7 @@ function ListItemsDeleteAction({ onPress }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.danger,
+        backgroundColor: defaultStyles.colors.danger,
         width: 70,
         justifyContent: 'center',
         alignItems: 'center'
