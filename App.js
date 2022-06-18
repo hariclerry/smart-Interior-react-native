@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import * as ImagePicker from 'expo-image-picker';
+// import { View, StyleSheet } from 'react-native';
+// import Screen from "./app/components/commons/Screen";
 
-import Screen from "./app/components/commons/Screen";
-// import AppPicker from "./app/components/AppPicker";
-// import AppTextInput from "./app/components/AppTextInput";
 import ListingEditScreen from './app/screens/ListingEditScreen';
 
-export default function App() {
-  // const [category, setCategory] = useState(categories[0]);
+function App() {
   return (
-    <>
-      <ListingEditScreen />
-    </>
+    <ListingEditScreen />
   );
 }
+
+// const styles = StyleSheet.create({
+//   container: {}
+// });
+
+export default App;
