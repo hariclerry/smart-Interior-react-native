@@ -20,10 +20,11 @@ const menuItems = [
             name: "email",
             backgroundColor: defaultStyles.colors.secondary,
         },
+        targetScreen: "Messages",
     },
 ];
 
-function AccountScreen(props) {
+function AccountScreen({ navigation }) {
     return (
         <Screen style={styles.screen}>
             <View style={styles.container}>
@@ -54,6 +55,7 @@ function AccountScreen(props) {
             <ListItem
                 title="Log Out"
                 IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
+                onPress={() => navigation.navigate(item.targetScreen)}
             />
         </Screen>
     );

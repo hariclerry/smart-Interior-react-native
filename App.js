@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import * as ImagePicker from 'expo-image-picker';
-// import { View, StyleSheet } from 'react-native';
-// import Screen from "./app/components/commons/Screen";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
-import ListingEditScreen from './app/screens/ListingEditScreen';
+import navigationTheme from "./app/navigation/navigationTheme";
+// import AppNavigator from "./app/navigation/AppNavigator";
+import AppNavigator from "./app/navigation/AuthNavigator"
 
-function App() {
+export default function App() {
   return (
-    <ListingEditScreen />
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {}
-// });
-
-export default App;
