@@ -13,7 +13,7 @@ function WelcomeScreen({ navigation }) {
         >
             <View style={styles.logoContainer}>
                 <Image
-                    source={require('../assets/smart-logo-removebg.png')}
+                    source={require('../assets/logo-original.png')}
                     style={styles.logo}
                 />
                 <Text style={styles.tagline}>Accessorize your Home</Text>

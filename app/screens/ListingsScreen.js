@@ -1,37 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
 import Screen from "../components/commons/Screen";
 import Card from "../components/commons/Card";
+import routes from "../navigation/routes";
+import listingsApi from "../api/listings";
 import defaultStyles from "../config/styles";
-
-const listings = [
-    {
-        id: 1,
-        title: "Flower vase",
-        price: 100,
-        image: require("../assets/flower-vase.jpg"),
-    },
-    {
-        id: 2,
-        title: "Sitting Stools",
-        price: 1000,
-        image: require("../assets/background2.jpg"),
-    },
-];
+import AppText from "../components/commons/AppText";
+import AppButton from "../components/commons/AppButton";
+import ActivityIndicator from "../components/commons/ActivityIndicator";
+import useApi from "../hooks/useApi";
 
 function ListingsScreen({ navigation }) {
+    const getListingsApi = useApi(listingsApi.getListings);
+
+
+    useEffect(() => {
+        getListingsApi.request();
+    }, [])
+
     return (
         <Screen style={styles.screen}>
+            {!!getListingsApi.error && (
+                <>
+                    <AppText> Couldn't retrieve the listings</AppText>
+                    <AppButton title='Retry' onPress={getListingsApi.request} />
+                </>
+            )}
+            <ActivityIndicator visible={getListingsApi.loading} />
             <FlatList
-                data={listings}
+                data={getListingsApi.data}
                 keyExtractor={(listing) => listing.id.toString()}
                 renderItem={({ item }) => (
                     <Card
                         title={item.title}
                         subTitle={"$" + item.price}
-                        image={item.image}
-                        onPress={() => navigation.navigate("ListingDetails", item)}
+                        imageUrl={item.images[0].url}
+                        onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+                        thumbnailUrl={item.images[0].thumbnailUrl}
                     />
                 )}
             />

@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         padding: 15,
         marginVertical: 10,
-        height: 50,
     },
     icon: {
         marginRight: 10,
