@@ -25,7 +25,7 @@ function LoginScreen(props) {
     return (
         <Screen style={styles.container}>
             <ErrorMessage error="Invalid email and/or password" visible={loginFailed} />
-            <Image style={styles.logo} source={require("../assets/logo-original.png")} />
+            <Image style={styles.logo} source={require("../assets/logo-original-removebg.png")} />
             <AppForm
                 initialValues={{ email: "", password: "" }}
                 onSubmit={handleSubmit}

@@ -11,7 +11,6 @@ function ContactSellerForm({ listing }) {
         Keyboard.dismiss();
 
         const result = await messagesApi.send(message, listing.id);
-        console.log("result--------", result)
 
         if (!result.ok) {
             console.log("Error", result);

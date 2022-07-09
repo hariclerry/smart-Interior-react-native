@@ -7,16 +7,17 @@ import routes from "../navigation/routes";
 function WelcomeScreen({ navigation }) {
     return (
         <ImageBackground
-            blurRadius={8}
-            source={require('../assets/background.jpg')}
+            blurRadius={5}
+            source={require('../assets/landing-page.jpg')}
             style={styles.background}
         >
             <View style={styles.logoContainer}>
                 <Image
-                    source={require('../assets/logo-original.png')}
+                    source={require('../assets/logo-original-removebg.png')}
                     style={styles.logo}
                 />
-                <Text style={styles.tagline}>Accessorize your Home</Text>
+                <Text style={styles.title}>Smart Home Decor</Text>
+                <Text style={styles.tagline}>A place to sell your used home interior Accessories</Text>
             </View>
 
             <View style={styles.buttonContainers}>
@@ -58,10 +59,17 @@ const styles = StyleSheet.create({
         padding: 20,
         width: '100%',
     },
-    tagline: {
-        fontSize: 25,
+    title: {
+        fontSize: 20,
         fontWeight: "600",
         paddingVertical: 10,
+    },
+    tagline: {
+        fontSize: 18,
+        fontWeight: "300",
+        paddingVertical: 3,
+        fontStyle: 'italic',
+        textAlign: 'center',
     }
 
 })

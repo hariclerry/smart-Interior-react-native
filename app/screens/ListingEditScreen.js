@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import * as Yup from "yup";
 
 import {
@@ -105,49 +105,51 @@ function ListingEditScreen() {
 
 
     return (
-        <Screen style={styles.container}>
-            <UploadScreen
-                onDone={() => setUploadVisible(false)}
-                progress={progress}
-                visible={uploadVisible}
-            />
-            <Form
-                initialValues={{
-                    title: "",
-                    price: "",
-                    description: "",
-                    category: null,
-                    images: [],
-                }}
-                onSubmit={handleSubmit}
-                validationSchema={validationSchema}
-            >
-                <FormImagePicker name="images" />
-                <FormField maxLength={255} name="title" placeholder="Title" />
-                <FormField
-                    keyboardType="numeric"
-                    maxLength={8}
-                    name="price"
-                    placeholder="Price"
-                    width={120}
+        <ScrollView>
+            <Screen style={styles.container}>
+                <UploadScreen
+                    onDone={() => setUploadVisible(false)}
+                    progress={progress}
+                    visible={uploadVisible}
                 />
-                <Picker
-                    width="50%"
-                    items={categories}
-                    name="category"
-                    PickerItemComponent={CategoryPickerItem}
-                    numberOfColumns={3}
-                    placeholder="Category" />
-                <FormField
-                    maxLength={255}
-                    multiline
-                    name="description"
-                    numberOfLines={3}
-                    placeholder="Description"
-                />
-                <SubmitButton title="Post" />
-            </Form>
-        </Screen>
+                <Form
+                    initialValues={{
+                        title: "",
+                        price: "",
+                        description: "",
+                        category: null,
+                        images: [],
+                    }}
+                    onSubmit={handleSubmit}
+                    validationSchema={validationSchema}
+                >
+                    <FormImagePicker name="images" />
+                    <FormField maxLength={255} name="title" placeholder="Title" />
+                    <FormField
+                        keyboardType="numeric"
+                        maxLength={8}
+                        name="price"
+                        placeholder="Price"
+                        width={120}
+                    />
+                    <Picker
+                        width="50%"
+                        items={categories}
+                        name="category"
+                        PickerItemComponent={CategoryPickerItem}
+                        numberOfColumns={3}
+                        placeholder="Category" />
+                    <FormField
+                        maxLength={255}
+                        multiline
+                        name="description"
+                        numberOfLines={3}
+                        placeholder="Description"
+                    />
+                    <SubmitButton title="Post" />
+                </Form>
+            </Screen>
+        </ScrollView>
     );
 }
 
