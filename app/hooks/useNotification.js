@@ -1,25 +1,88 @@
-import { useEffect } from "react";
-import * as Permissions from "expo-permissions";
+import { useEffect, useRef, useState } from "react";
 import * as Notifications from 'expo-notifications';
 
-import ExpoPushTokensApi from "../api/expoPushTokens";
+// import expoPushTokensApi from "../api/expoPushTokens";
+import expoPushTokensApi from "../api/expoPushTokens";
 
-export default useNotifications = (notificationListener) => {
+// Required
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: false,
+    }),
+});
+
+export default useNotifications = () => {
+    const [notification, setNotification] = useState(false);
+    const notificationListener = useRef();
+    const responseListener = useRef();
 
     useEffect(() => {
         registerForPushNotifications();
-        if (notificationListener) Notifications.addNotificationResponseReceivedListener(notificationListener)
-    }, [])
+
+        // This listener is fired whenever a notification is received while the app is foregrounded
+        notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+            setNotification(notification);
+        });
+
+        // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
+        responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+            console.log(response.notification.request.content.body);
+        });
+
+        return () => {
+            Notifications.removeNotificationSubscription(notificationListener.current);
+            Notifications.removeNotificationSubscription(responseListener.current);
+        };
+
+    }, []);
+
+
+    const registerForPushNotifications = async () => {
+        try {
+            const permissions = await Notifications.getPermissionsAsync();
+            if (!permissions.granted) {
+                const finalPermissions = await Notifications.requestPermissionsAsync();
+                if (!finalPermissions.granted) {
+                    console.log("permissions NOT granted!");
+                    return;
+                }
+            }
+            console.log("permissions granted!");
+
+            const token = await Notifications.getExpoPushTokenAsync();
+            expoPushTokensApi.register(token.data);
+
+        } catch (error) {
+            console.log("Error getting a push token", error);
+        }
+    };
 }
 
-const registerForPushNotifications = async () => {
-    try {
-        const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-        if (!permission.granted) return;
 
-        const token = await Notifications.getExpoPushTokenAsync();
-        ExpoPushTokensApi.register(token);
-    } catch (error) {
-        console.log("An error has occured", error);
-    }
-}
+// import { useEffect } from "react";
+// import * as Permissions from "expo-permissions";
+// import * as Notifications from 'expo-notifications';
+
+// import ExpoPushTokensApi from "../api/expoPushTokens";
+
+// export default useNotifications = (notificationListener) => {
+
+//     useEffect(() => {
+//         registerForPushNotifications();
+//         if (notificationListener) Notifications.addNotificationResponseReceivedListener(notificationListener)
+//     }, [])
+// }
+
+// const registerForPushNotifications = async () => {
+//     try {
+//         const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+//         if (!permission.granted) return;
+
+//         const token = await Notifications.getExpoPushTokenAsync();
+//         ExpoPushTokensApi.register(token);
+//     } catch (error) {
+//         console.log("An error has occured", error);
+//     }
+// }
