@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 
 import Screen from "../components/commons/Screen";
@@ -6,6 +6,7 @@ import { ListItemSeparator, ListItem } from "../components/lists";
 import defaultStyles from "../config/styles";
 import Icon from "../components/commons/Icon";
 import useAuth from "../auth/useAuth";
+import routes from "../navigation/routes";
 
 const menuItems = [
     {
@@ -21,7 +22,7 @@ const menuItems = [
             name: "email",
             backgroundColor: defaultStyles.colors.secondary,
         },
-        targetScreen: "Messages",
+        targetScreen: routes.MESSAGES,
     },
 ];
 
@@ -51,6 +52,7 @@ function AccountScreen({ navigation }) {
                                     backgroundColor={item.icon.backgroundColor}
                                 />
                             }
+                            onPress={item.targetScreen ? () => navigation.navigate(item.targetScreen) : () => console.log('called')}
                         />
                     )}
                 />

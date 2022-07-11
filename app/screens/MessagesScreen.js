@@ -9,14 +9,14 @@ import Screen from '../components/commons/Screen';
 const initialMessages = [
     {
         id: 1,
-        title: 'T1',
-        description: 'D1',
+        title: 'Testing message one',
+        description: 'I am interested in this item.Do you provide free delivery?',
         image: require('../assets/avatar2.jpg')
     },
     {
         id: 2,
-        title: 'T2',
-        description: 'D2',
+        title: 'Testing message two',
+        description: 'Is this still available?',
         image: require('../assets/avatar2.jpg')
     }
 ]
@@ -42,7 +42,7 @@ function MessagesScreen() {
                         title={item.title}
                         subTitle={item.description}
                         image={item.image}
-                        onPress={() => console.log("Touched----", item)}
+                        onPress={() => console.log("Touched----")}
                         renderRightActions={() => <ListItemsDeleteAction onPress={() => handleDelete(item)} />}
 
                     />

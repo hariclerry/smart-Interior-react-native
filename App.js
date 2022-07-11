@@ -1,3 +1,6 @@
+import Bugsnag from '@bugsnag/expo';
+Bugsnag.start();
+
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import AppLoading from 'expo-app-loading';
@@ -10,13 +13,17 @@ import AuthNavigator from "./app/navigation/AuthNavigator";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import { navigationRef } from "./app/navigation/rootNavigation";
+import logger from "./app/utility/logger";
 
+//Logs
+logger.start();
 LogBox.ignoreLogs([
   "ViewPropTypes will be removed",
   "ColorPropType will be removed",
 ])
 
 export default function App() {
+
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 

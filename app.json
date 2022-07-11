@@ -40,7 +40,21 @@
     "plugins": [
       "expo-image-picker",
       "expo-location",
-      "expo-notifications"
-    ]
+      "expo-notifications",
+      "expo-file-system"
+    ],
+    "extra": {
+      "bugsnag": {
+        "apiKey": "cc0ed456b1852417a5b391360d09399c"
+      }
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
+    }
   }
 }
