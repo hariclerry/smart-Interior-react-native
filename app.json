@@ -36,7 +36,7 @@
     "web": {
       "favicon": "./app/assets/favicon.png"
     },
-    "description": "A place to sell your used home interior accessories",
+    "description": "A marketplace to sell the home interior accessories you do not need anymore",
     "plugins": [
       "expo-image-picker",
       "expo-location",

@@ -7,7 +7,7 @@ import routes from "../navigation/routes";
 function WelcomeScreen({ navigation }) {
     return (
         <ImageBackground
-            blurRadius={5}
+            blurRadius={8}
             source={require('../assets/landing-page.jpg')}
             style={styles.background}
         >
@@ -17,7 +17,7 @@ function WelcomeScreen({ navigation }) {
                     style={styles.logo}
                 />
                 <Text style={styles.title}>Smart Home Decor</Text>
-                <Text style={styles.tagline}>A place to sell your used home interior Accessories</Text>
+                <Text style={styles.tagline}>A marketplace to sell your used home interior Accessories</Text>
             </View>
 
             <View style={styles.buttonContainers}>

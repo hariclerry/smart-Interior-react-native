@@ -5,7 +5,7 @@ const settings = {
         apiUrl: "http://192.168.100.3:9000/api",
     },
     staging: {
-        apiUrl: "http://192.168.100.3:9000/api",
+        apiUrl: "https://agile-savannah-82661.herokuapp.com/api",
     },
     prod: {
         apiUrl: "http://192.168.100.3:9000/api",
