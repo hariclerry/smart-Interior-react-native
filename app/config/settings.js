@@ -5,7 +5,7 @@ const settings = {
         apiUrl: "http://192.168.100.3:9000/api",
     },
     staging: {
-        apiUrl: "https://smart-interior-backend.onrender.com/",
+        apiUrl: "https://smart-interior-backend.onrender.com",
     },
     prod: {
         apiUrl: "http://192.168.100.3:9000/api",
